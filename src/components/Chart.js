@@ -1,11 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ApexCharts from 'apexcharts'
-import data from "../db/DB";
-
+import  jsonData from "../db/data.json"
 function Charts(props) {
+
     useEffect(() => {
         const options = {
-            series: data,
+            series:[{
+                data: jsonData.data.map(item => {
+                    return {
+                        x: new Date(item.x), // Convert Date object to timestamp if needed
+                        y: item.y
+                    };
+                }),
+            }],
             chart: {
                 type: 'candlestick',
                 height: "auto"
