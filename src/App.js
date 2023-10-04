@@ -1,12 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import Charts from "./components/Chart";
+import StockList from "./components/StockList";
 
 function App() {
   return (
-      <><div>Sefa</div>
-        <div>
-          Batu
-        </div></>
+     <>
+         <Charts>
+
+         </Charts>
+         <StockList>
+
+         </StockList>
+     </>
 
   );
 }
