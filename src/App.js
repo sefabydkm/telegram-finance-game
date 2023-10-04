@@ -1,15 +1,13 @@
 import Charts from "./components/Chart";
 import StockList from "./components/StockList";
+import ChartView from "./view/ChartView";
+import StockListView from "./view/StockListView";
 
 function App() {
   return (
      <>
-         <Charts>
-
-         </Charts>
-         <StockList>
-
-         </StockList>
+         <ChartView></ChartView>
+         <StockListView></StockListView>
      </>
 
   );
