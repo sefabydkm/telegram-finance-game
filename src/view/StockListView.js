@@ -1,8 +1,11 @@
 import React from 'react';
+import StockList from "../components/StockList";
 
 function StockListView(props) {
     return (
-        <div></div>
+        <div>
+            <StockList></StockList>
+        </div>
     );
 }
 

@@ -1,15 +1,17 @@
-import Charts from "./components/Chart";
-import StockList from "./components/StockList";
 import ChartView from "./view/ChartView";
 import StockListView from "./view/StockListView";
+import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
+import React from "react";
 
 function App() {
   return (
-     <>
-         <ChartView></ChartView>
-         <StockListView></StockListView>
-     </>
-
+     <BrowserRouter >
+         <Routes>
+             <Route path="/" element={<Navigate to="/stock" />} />
+             <Route path="/stock" element={<StockListView />} />
+             <Route path="/stock/:id" element={<ChartView />} />
+         </Routes>
+     </BrowserRouter>
   );
 }
 

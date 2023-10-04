@@ -1,7 +1,10 @@
 import React from 'react';
 import MUIDataTable from "mui-datatables";
+import { useNavigate } from 'react-router-dom';
 
 function StockList(props) {
+    const navigate = useNavigate()
+
     const columns = [
         {
             name: "name",
@@ -51,8 +54,8 @@ function StockList(props) {
         download:false,
         viewColumns:false,
         selectableRows:'none',
-        onCellClick: (cellIndex, rowIndex) => {
-            console.log(cellIndex, rowIndex);
+        onCellClick: (cellIndex, rowIndex, dataIndex) => {
+            navigate('/stock/'+rowIndex.dataIndex)
         }
     };
 
