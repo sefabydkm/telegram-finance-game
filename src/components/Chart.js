@@ -1,32 +1,25 @@
 import React, {useEffect} from 'react';
 import ApexCharts from 'apexcharts'
+import data from "../db/DB";
 
 function Charts(props) {
     useEffect(() => {
         const options = {
+            series: data,
             chart: {
                 type: 'candlestick',
+                height: "auto"
             },
-            series: [{
-                data: [
-                    [1538856000000, [6593.34, 6600, 6582.63, 6600]],
-                    [1538856100000, [6595.16, 6604.76, 6590.73, 6593.86]],
-                    [1538856200000, [6595.16, 6604.76, 6590.73, 6593.86]],
-                    [1538856300000, [6595.16, 6604.76, 6590.73, 6593.86]],
-                    [1538856400000, [6595.16, 6604.76, 6590.73, 6593.86]],
-                    [1538856500000, [6595.16, 6604.76, 6590.73, 6593.86]],
-                    [1538856600000, [6595.16, 6604.76, 6590.73, 6593.86]],
-                    [1538856700000, [6595.16, 6604.76, 6590.73, 6593.86]],
-                    [1538856800000, [6595.16, 6604.76, 6590.73, 6593.86]],
-                    [1538856900000, [6595.16, 6604.76, 6590.73, 6593.86]]
-                ]
-            }],
-            plotOptions: {
-                candlestick: {
-                    colors: {
-                        upward: '#3C90EB',
-                        downward: '#d91b37'
-                    }
+            title: {
+                text: 'CandleStick Chart',
+                align: 'left'
+            },
+            xaxis: {
+                type: 'datetime'
+            },
+            yaxis: {
+                tooltip: {
+                    enabled: true
                 }
             }
         };
@@ -40,7 +33,7 @@ function Charts(props) {
         };
     }, []);
     return (
-        <div id="chart" />
+        <div id="chart"/>
     );
 }
 
