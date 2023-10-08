@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import ApexCharts from 'apexcharts'
 import  jsonData from "../db/data.json"
 function Charts(props) {
-
     useEffect(() => {
         const options = {
             series:[{
