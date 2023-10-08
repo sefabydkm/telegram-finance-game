@@ -84,7 +84,6 @@ function StockList(props) {
     return (
         <div>
             <MUIDataTable
-                title={"Stock List"}
                 data={data}
                 columns={columns}
                 options={options}

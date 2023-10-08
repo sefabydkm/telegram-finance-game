@@ -19,7 +19,7 @@ function Charts(props) {
                 height: "auto"
             },
             title: {
-                text: 'CandleStick Chart',
+                text: props.name,
                 align: 'left'
             },
             xaxis: {

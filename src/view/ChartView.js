@@ -8,6 +8,7 @@ import {useParams} from "react-router-dom";
 function ChartView() {
     let {stockName} = useParams();
     const [stockData, setStockData] = useState({});
+    const [backgroundColor, setBackgroundColor] = useState('#071e26');
     useEffect(() => {
         setStockData(getStock(stockName))
     }, [])
@@ -17,10 +18,10 @@ function ChartView() {
     }
 
     return (
-        <div>
+        <div style={{ backgroundColor }}>
             <Grid container alignItems={"center"} justifyContent={"center"} paddingY={5} spacing={3}>
                 <Grid item xs={20}>
-                    <Chart data={stockData}></Chart>
+                    <Chart data={stockData} name = {stockName}></Chart>
                 </Grid>
                 <Grid item xs={3}>
                     <Button variant="contained" color="success">
