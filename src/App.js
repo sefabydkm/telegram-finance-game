@@ -12,7 +12,7 @@ function App() {
     return (
      <BrowserRouter >
          <Routes>
-             <Route path="/telegram-finance-game/" element={<Navigate to="/stock" />} />
+             <Route path="/telegram-finance-game/" element={<Navigate to="/telegram-finance-game/stock" />} />
              <Route path="/telegram-finance-game/stock" element={<StockListView />} />
              <Route path="/telegram-finance-game/stock/:id" element={<ChartView />} />
          </Routes>
