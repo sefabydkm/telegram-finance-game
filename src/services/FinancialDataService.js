@@ -1,14 +1,16 @@
 import React from 'react';
 import stockListData from '../db/stockList.json'
+import {formatDateToYYYYMMDD} from "../utils";
 
 let stocks = ["ibm", "apple", "microsoft", "amazon", "tesla"]
 
-function getStock(stock) {
-    return stockListData.filter((dbStock) => stock==dbStock.stock)
+export function getStock(stock, date) {
+    let d = formatDateToYYYYMMDD(date)
+    console.log(d)
+    return stockListData.stockList.filter( s => s.stock === stock)[0].data[`Time Series (Daily)`].filter(dt => dt == d)[0]
 }
 
-function getStockList()
+export function getStockList()
 {
-    return stockListData
+    return stockListData.stockList.map(s => s.stock)
 }
-export default getStockList;

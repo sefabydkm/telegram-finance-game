@@ -1,9 +1,11 @@
 import React from 'react';
 import StockList from "../components/StockList";
-import getStockList from "../services/FinancialDataService";
+import {getStock} from "../services/FinancialDataService";
 
 function StockListView(props) {
-    console.log(getStockList())
+    let date = new Date()
+    date.setDate(date.getDate() - 7)
+    console.log(getStock("tesla",  date))
     return (
         <div>
             <StockList></StockList>
