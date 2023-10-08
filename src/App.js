@@ -1,10 +1,13 @@
 import ChartView from "./view/ChartView";
 import StockListView from "./view/StockListView";
 import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
-import React from "react";
+import React, {useEffect} from "react";
 
 function App() {
-  return (
+    useEffect(() => {
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    },[]);
+    return (
      <BrowserRouter >
          <Routes>
              <Route path="/" element={<Navigate to="/stock" />} />
