@@ -55,7 +55,7 @@ function StockList(props) {
         viewColumns:false,
         selectableRows:'none',
         onCellClick: (cellIndex, rowIndex, dataIndex) => {
-            navigate('/stock/'+rowIndex.dataIndex)
+            navigate('/telegram-finance-game/stock/'+rowIndex.dataIndex)
         }
     };
 
