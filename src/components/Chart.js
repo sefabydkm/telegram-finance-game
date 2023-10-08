@@ -6,7 +6,7 @@ function Charts(props) {
         const dateKeys = Object.keys(props.data);
 
         const options = {
-            series:[{
+            series: [{
                 data: dateKeys.map(date => {
                     return {
                         x: date,

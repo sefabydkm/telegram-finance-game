@@ -4,7 +4,7 @@ import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "
 function LiveTable(props) {
     return (
         <TableContainer component={"paper"}>
-            <Table sx={{ minWidth: 350 }} aria-label="simple table">
+            <Table sx={{minWidth: 350}} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Live Data</TableCell>
@@ -12,10 +12,10 @@ function LiveTable(props) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                   <TableRow>
-                       <TableCell component="th" scope="row">Buying</TableCell>
-                       <TableCell align="right">Coming Soon</TableCell>
-                   </TableRow>
+                    <TableRow>
+                        <TableCell component="th" scope="row">Buying</TableCell>
+                        <TableCell align="right">Coming Soon</TableCell>
+                    </TableRow>
                     <TableRow>
                         <TableCell component="th" scope="row">Selling</TableCell>
                         <TableCell align="right">Coming Soon</TableCell>

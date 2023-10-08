@@ -6,11 +6,11 @@ import {getStock} from "../services/FinancialDataService";
 import {useParams} from "react-router-dom";
 
 function ChartView() {
-    let { stockName } = useParams();
+    let {stockName} = useParams();
     const [stockData, setStockData] = useState({});
-    useEffect( () => {
-            setStockData(getStock(stockName))
-        }, [])
+    useEffect(() => {
+        setStockData(getStock(stockName))
+    }, [])
 
     if (Object.keys(stockData).length === 0) {
         return <div>No data available.</div>;
