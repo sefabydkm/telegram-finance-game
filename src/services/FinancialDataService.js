@@ -10,5 +10,5 @@ export function getStock(stock) {
 
 export function getStockList()
 {
-    return stockListData.stockList.map(s => s.stock)
+    return stockListData.stockList
 }

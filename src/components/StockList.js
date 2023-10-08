@@ -1,26 +1,35 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import MUIDataTable from "mui-datatables";
 import { useNavigate } from 'react-router-dom';
-
+import {flatten, formatDateToYYYYMMDD} from "../utils";
+import {getStockList} from "../services/FinancialDataService";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 function StockList(props) {
+    const [data, setdata] = useState([]);
+    const [date, setDate] = useState(new Date("2023-08-17"))
+    useEffect(() => {
+       setdata(getStockList().map((q) => flatten(q)));
+    },[]);
     const navigate = useNavigate()
 
     const columns = [
         {
-            name: "stock",
+            name: "data.Meta Data.2. Symbol",
             label: "Stock",
         },
         {
-            name: "company",
-            label: "Company",
+            name: "data.Time Series (Daily)."+formatDateToYYYYMMDD(date)+".4. close",
+            label: "Close",
             options: {
                 filter: true,
                 sort: false,
             }
         },
         {
-            name: "city",
-            label: "City",
+            name: "data.Time Series (Daily)."+formatDateToYYYYMMDD(date)+".5. volume",
+            label: "Volume",
             options: {
                 filter: true,
                 sort: false,
@@ -28,20 +37,41 @@ function StockList(props) {
         },
         {
             name: "state",
-            label: "State",
+            label: "Change",
             options: {
-                filter: true,
                 sort: false,
-            }
+                customBodyRenderLite: (dataIndex, rowIndex) => {
+                    let todayValue = data[dataIndex]["data.Time Series (Daily)."+formatDateToYYYYMMDD(date)+".4. close"]
+                    let yesterdayValue = data[dataIndex]["data.Time Series (Daily)."+formatDateToYYYYMMDD(new Date((new Date(date)).setDate(date.getDate() - 1)))+".4. close"]
+                    let difference =((Math.abs(todayValue-yesterdayValue)/yesterdayValue)*100).toFixed(2)
+                    console.log("formatDateToYYYYMMDD(date)",formatDateToYYYYMMDD(date))
+                    console.log("today",todayValue)
+                    console.log("yesterday",yesterdayValue)
+                    console.log("data",dataIndex)
+                    if (todayValue === yesterdayValue){
+                        return <div>
+                            {difference}%
+                            <CompareArrowsIcon></CompareArrowsIcon>
+                        </div>
+                    }
+                    else if(todayValue > yesterdayValue){
+                        return <div>
+                            {difference}%
+                            <ArrowUpwardIcon style={{color:"green"}}></ArrowUpwardIcon>
+                        </div>
+                    }
+                    else{
+                        return <div>
+                            {difference}%
+                            <ArrowDownwardIcon style={{color:"red"}}></ArrowDownwardIcon>
+                            </div>
+                    }
+
+                },
+            },
         },
     ];
 
-    const data = [
-        { name: "Joe James", company: "Test Corp", city: "Yonkers", state: "NY" },
-        { name: "John Walsh", company: "Test Corp", city: "Hartford", state: "CT" },
-        { name: "Bob Herm", company: "Test Corp", city: "Tampa", state: "FL" },
-        { name: "James Houston", company: "Test Corp", city: "Dallas", state: "TX" },
-    ];
 
     const options = {
 

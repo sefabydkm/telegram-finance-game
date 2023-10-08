@@ -6,3 +6,22 @@ export function formatDateToYYYYMMDD(date) {
 
     return `${year}-${month}-${day}`;
 }
+
+export const isObject = input => typeof input === "object" && input !== null;
+
+export const flatten = source =>
+    isObject(source)
+        ? Object.fromEntries(
+            Object.entries(source).flatMap(([key, value]) =>
+                (flattenValue =>
+                    isObject(flattenValue)
+                        ? Object.entries(flattenValue).map(
+                            ([valueKey, valueValue]) => [
+                                `${key}.${valueKey}`,
+                                valueValue,
+                            ],
+                        )
+                        : [[key, value]])(flatten(value)),
+            ),
+        )
+        : source;
