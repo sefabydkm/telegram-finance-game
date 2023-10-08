@@ -44,10 +44,6 @@ function StockList(props) {
                     let todayValue = data[dataIndex]["data.Time Series (Daily)."+formatDateToYYYYMMDD(date)+".4. close"]
                     let yesterdayValue = data[dataIndex]["data.Time Series (Daily)."+formatDateToYYYYMMDD(new Date((new Date(date)).setDate(date.getDate() - 1)))+".4. close"]
                     let difference =((Math.abs(todayValue-yesterdayValue)/yesterdayValue)*100).toFixed(2)
-                    console.log("formatDateToYYYYMMDD(date)",formatDateToYYYYMMDD(date))
-                    console.log("today",todayValue)
-                    console.log("yesterday",yesterdayValue)
-                    console.log("data",dataIndex)
                     if (todayValue === yesterdayValue){
                         return <div>
                             {difference}%
@@ -80,8 +76,9 @@ function StockList(props) {
         download:false,
         viewColumns:false,
         selectableRows:'none',
-        onCellClick: (cellIndex, rowIndex, dataIndex) => {
-            navigate('/telegram-finance-game/stock/'+rowIndex.dataIndex)
+        onCellClick: (cellIndex, rowIndex) => {
+
+            navigate('/telegram-finance-game/stock/'+data[rowIndex.dataIndex].stock)
         }
     };
 
