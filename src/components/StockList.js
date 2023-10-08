@@ -7,12 +7,8 @@ function StockList(props) {
 
     const columns = [
         {
-            name: "name",
-            label: "Name",
-            options: {
-                filter: true,
-                sort: true,
-            }
+            name: "stock",
+            label: "Stock",
         },
         {
             name: "company",
