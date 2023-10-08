@@ -71,13 +71,13 @@ function StockList(props) {
     const options = {
 
         filterType: 'checkbox',
-        print: false,
-        download: false,
-        viewColumns: false,
-        selectableRows: 'none',
+        print:false,
+        download:false,
+        viewColumns:false,
+        selectableRows:'none',
+        responsive: "scroll",
         onCellClick: (cellIndex, rowIndex) => {
-
-            navigate('/telegram-finance-game/stock/' + data[rowIndex.dataIndex].stock)
+            navigate('/telegram-finance-game/stock/'+data[rowIndex.dataIndex].stock)
         }
     };
 
