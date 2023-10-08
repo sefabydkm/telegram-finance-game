@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/telegram-finance-game/static/js/main.f6748aef.js",
+    "index.html": "/telegram-finance-game/index.html",
+    "main.f6748aef.js.map": "/telegram-finance-game/static/js/main.f6748aef.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.f6748aef.js"
+  ]
+}
