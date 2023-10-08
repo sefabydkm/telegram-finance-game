@@ -6,9 +6,7 @@ import {Grid} from "@mui/material";
 function StockListView(props) {
     return (
         <div>
-            <Grid container alignItems={"center"} justifyContent={"center"}>
                 <StockList></StockList>
-            </Grid>
         </div>
     );
 }
