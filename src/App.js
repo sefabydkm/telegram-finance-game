@@ -3,10 +3,12 @@ import StockListView from "./view/StockListView";
 import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import React, {useEffect} from "react";
 
+const tele = window.Telegram.WebApp
+
 function App() {
     useEffect(() => {
-        <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    },[]);
+        tele.ready();
+    });
     return (
      <BrowserRouter >
          <Routes>
