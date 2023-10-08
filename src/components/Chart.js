@@ -1,14 +1,16 @@
 import React, {useEffect} from 'react';
 import ApexCharts from 'apexcharts'
-import  jsonData from "../db/data.json"
+
 function Charts(props) {
     useEffect(() => {
+        const dateKeys = Object.keys(props.data);
+
         const options = {
             series:[{
-                data: jsonData.data.map(item => {
+                data: dateKeys.map(date => {
                     return {
-                        x: new Date(item.x), // Convert Date object to timestamp if needed
-                        y: item.y
+                        x: date,
+                        y: [props.data[date][`1. open`], props.data[date][`2. high`], props.data[date][`3. low`], props.data[date][`4. close`]]
                     };
                 }),
             }],
