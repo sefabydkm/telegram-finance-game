@@ -16,7 +16,9 @@ function Charts(props) {
             }],
             chart: {
                 type: 'candlestick',
-                height: "auto"
+                height: "auto",
+                foreColor: '#f5f6f1',
+                fontFamily: 'Trebuchet MS'
             },
             title: {
                 text: props.name,

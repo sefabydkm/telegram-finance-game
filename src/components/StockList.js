@@ -10,6 +10,7 @@ import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 function StockList(props) {
     const [data, setdata] = useState([]);
     const [date, setDate] = useState(new Date("2023-08-17"))
+    const [backgroundColor, setBackgroundColor] = useState('#071e26');
     useEffect(() => {
         setdata(getStockList().map((q) => flatten(q)));
     }, []);
@@ -61,7 +62,6 @@ function StockList(props) {
                             <ArrowDownwardIcon style={{color: "red"}}></ArrowDownwardIcon>
                         </div>
                     }
-
                 },
             },
         },
@@ -69,7 +69,6 @@ function StockList(props) {
 
 
     const options = {
-
         filterType: 'checkbox',
         print:false,
         download:false,

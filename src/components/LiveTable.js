@@ -3,11 +3,16 @@ import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "
 
 function LiveTable(props) {
     return (
-        <TableContainer component={"paper"}>
-            <Table sx={{minWidth: 350}} aria-label="simple table">
+        <TableContainer>
+            <Table sx={{
+                minWidth: 350,
+                '& .MuiTableCell-root': {
+                    color: '#f5f6f1'
+                },
+            }} aria-label="simple table">
                 <TableHead>
-                    <TableRow>
-                        <TableCell>Live Data</TableCell>
+                    <TableRow variant="contained" sx={{color: 'primary'}}>
+                        <TableCell >Live Data</TableCell>
                         <TableCell align="right">Today</TableCell>
                     </TableRow>
                 </TableHead>
