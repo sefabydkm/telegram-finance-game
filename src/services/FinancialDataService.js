@@ -1,6 +1,5 @@
 import React from 'react';
 import stockListData from '../db/stockList.json'
-import {formatDateToYYYYMMDD} from "../utils";
 
 let stocks = ["ibm", "apple", "microsoft", "amazon", "tesla"]
 
