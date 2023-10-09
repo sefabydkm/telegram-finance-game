@@ -6,6 +6,8 @@ import {getStockList} from "../services/FinancialDataService";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import { ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
 function StockList(props) {
     const [data, setdata] = useState([]);
@@ -20,6 +22,9 @@ function StockList(props) {
         {
             name: "data.Meta Data.2. Symbol",
             label: "Stock",
+            options: {
+                sort: false
+            }
         },
         {
             name: "data.Time Series (Daily)." + formatDateToYYYYMMDD(date) + ".4. close",
@@ -66,10 +71,79 @@ function StockList(props) {
             },
         },
     ];
+    const getMuiTheme = () =>
+        createTheme({
+            components: {
+                MUIDataTable: {
+                    styleOverrides: {
+                        root: {
+                            backgroundColor: backgroundColor,
+                            color:'#ffffff'
+                        },
 
+                    },
+                },
+                MuiToolbar: {
+                    styleOverrides: {
+                        root: {
+                            backgroundColor: backgroundColor,
+                            color:'#ffffff'
+                        },
+
+                    },
+                },
+                MuiTableCell: {
+                    styleOverrides: {
+                        head: {
+                            backgroundColor: backgroundColor,
+                            color:'#ffffff'
+                        },
+                        body:{
+                            backgroundColor: backgroundColor,
+                            color:'#ffffff'
+                        },
+                        footer:{
+                            backgroundColor: backgroundColor,
+                            color:'#ffffff'
+                        },
+                    },
+                },
+                MUIDataTableSelectCell: {
+                    styleOverrides: {
+                        headerCell: {
+                            backgroundColor: backgroundColor,
+                            color:'#ffffff'
+                        }
+                    },
+                },
+                MuiTableFooter: {
+                    styleOverrides: {
+                        root: {
+                            '& .MuiToolbar-root': {
+                                backgroundColor: backgroundColor ,
+                                color:'#ffffff'
+                            },
+                        },
+
+                    },
+                },
+                MUIDataTableHeadCell: {
+                    styleOverrides: {
+                        root: {
+                            backgroundColor: backgroundColor, // Background color of column names
+                            color:'#ffffff'
+                        },
+                    },
+                },
+
+            },
+        }
+
+        );
 
     const options = {
-        filterType: 'checkbox',
+        filterType: 'none',
+        filter:false,
         print:false,
         download:false,
         viewColumns:false,
@@ -82,11 +156,13 @@ function StockList(props) {
 
     return (
         <div>
+            <ThemeProvider theme={getMuiTheme()}>
             <MUIDataTable
                 data={data}
                 columns={columns}
                 options={options}
             />
+            </ThemeProvider>
         </div>
     );
 }
