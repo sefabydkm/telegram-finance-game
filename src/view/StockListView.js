@@ -6,7 +6,7 @@ import {Grid} from "@mui/material";
 function StockListView(props) {
     return (
         <div>
-                <StockList></StockList>
+            <StockList></StockList>
         </div>
     );
 }

@@ -3,18 +3,24 @@ import {Button, Grid} from "@mui/material";
 import Chart from "../components/Chart";
 import LiveTable from "../components/LiveTable";
 import {getStock} from "../services/FinancialDataService";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 function ChartView() {
     let {stockName} = useParams();
     const [stockData, setStockData] = useState({});
     const [backgroundColor, setBackgroundColor] = useState('#071e26');
+    const navigate = useNavigate()
+
     useEffect(() => {
         setStockData(getStock(stockName))
     }, [])
 
     if (Object.keys(stockData).length === 0) {
         return <div>No data available.</div>;
+    }
+
+    function onClick(){
+        navigate('/telegram-finance-game/stock/')
     }
 
     return (
@@ -35,6 +41,11 @@ function ChartView() {
                 </Grid>
                 <Grid>
                     <LiveTable></LiveTable>
+                </Grid>
+                <Grid item xs={3}>
+                    <Button variant="contained" color="primary" onClick={onClick}>
+                        Back
+                    </Button>
                 </Grid>
             </Grid>
         </div>
